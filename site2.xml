@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="json" default="arc">
+  
+  
+  <property file="site2.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+    <target name="make.dir">
+        <mkdir dir="json/classes"/>
+    </target>
+
+    <target name="compile" depends="make.dir">
+        <javac  destdir="json/classes">
+            <src location="json/org/json"/>
+         </javac>
+
+    </target>
+
+    <target name="arc" depends="compile">
+        <jar destfile="json/json.jar">
+            <fileset  dir="json/classes">
+                <include name="**/*.class"/>
+                <exclude name="**/CVS"/>
+            </fileset>
+        </jar>
+    </target>
+  
+
+</project>
